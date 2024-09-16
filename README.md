@@ -29,6 +29,9 @@ Análisis y Reportes: Proporciona información valiosa para la toma de decisione
 
 Seguridad: Control de acceso para proteger la información sensible de la empresa.
 
-Desarrolladores
+Desarrolladores:
+
 Jean Carlo Barahona
+
 Carlos Emanuel Jimenez
+
