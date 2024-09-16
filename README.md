@@ -8,17 +8,25 @@ Muchas empresas gestionan sus inventarios de manera manual, lo que puede llevar 
 Módulos de la Aplicación
 
 Productos: Registro detallado de todos los productos manejados por la empresa.
+
 Categorías: Clasificación de productos para una mejor organización y búsqueda.
+
 Proveedores: Control y seguimiento de los productos suministrados por cada proveedor.
+
 Usuarios: Gestión de accesos y permisos para garantizar la seguridad del sistema.
+
 Ventas: Registro exhaustivo de todas las ventas realizadas.
+
 Reportes: Generación de gráficos y reportes que permiten visualizar puntos clave como productos más vendidos, stock bajo, órdenes de compra por fechas, entre otros.
 
 Beneficios de StockAppJC
 
 Optimización de Procesos: Automatiza y simplifica la gestión de inventarios.
+
 Reducción de Errores: Minimiza los errores humanos asociados con el manejo manual.
+
 Análisis y Reportes: Proporciona información valiosa para la toma de decisiones estratégicas.
+
 Seguridad: Control de acceso para proteger la información sensible de la empresa.
 
 Desarrolladores
