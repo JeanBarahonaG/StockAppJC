@@ -7,16 +7,11 @@
 <body>
     <header>
         <h1>StockAppJC</h1>
-        <nav>
-            <ul>
-                <li><a href="#problem">Problemática</a></li>
-                <li><a href="#modules">Módulos</a></li>
-                <li><a href="#benefits">Beneficios</a></li>
-                <li><a href="#developers">Desarrolladores</a></li>
-                <li><a href="#development">Desarrollo</a></li>
-            </ul>
-        </nav>
-    </header>
+          <section id="problem">
+        <p>StockAppJC es una aplicación de inventario diseñada para optimizar y modernizar la gestión de inventarios en las empresas. Esta aplicación aborda los desafíos del manejo manual de inventarios, proporcionando una solución integral y eficiente.</p>
+  </section>
+
+</header>
 
   <section id="problem">
         <h2>Problemática</h2>
