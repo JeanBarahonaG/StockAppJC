@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StockAppJC.Models;
+using StockAppJC.Models.ViewModels;
 using StockAppJC.Services;
 using StockAppJC.Token;
 
@@ -22,7 +23,7 @@ namespace StockAppJC.Controllers
         }
 
         [HttpPost("SingIn")]
-        public async Task<IActionResult> SignIn([FromBody] Usuario user)
+        public async Task<IActionResult> SignIn([FromBody] AccountViewModel user)
         {
             if (!ModelState.IsValid) 
             {
@@ -33,7 +34,7 @@ namespace StockAppJC.Controllers
             {
                 return BadRequest("User not found");
             }
-            var result = await _signInManager.PasswordSignInAsync(userSearch, user.PasswordHash, false, false);
+            var result = await _signInManager.PasswordSignInAsync(userSearch, user.Password, false, false);
             if (!result.Succeeded)
             {
                 return BadRequest("Invalid Email or Password");

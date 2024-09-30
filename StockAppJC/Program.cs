@@ -2,10 +2,10 @@ using Duende.IdentityServer.Stores;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using StockAppJC.DbContext;
 using StockAppJC.Models;
+using StockAppJC.Services;
 using StockAppJC.Token;
 using System.Text;
 
@@ -62,9 +62,22 @@ builder.Services.AddAuthentication(opt =>
 builder.Services.AddSingleton<ISigningCredentialStore, TemporarySingingCredentialStore>();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("NuevaPolitica", app =>
+    {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
@@ -72,13 +85,23 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Application StockAppJC");
+    });
 }
 
-app.UseHttpsRedirection();
+app.UseRouting();
 
+app.UseCors("NuevaPolitica");
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseIdentityServer();
 
-app.MapControllers();
+app.UseMiddleware<TokenValidationMiddleware>();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

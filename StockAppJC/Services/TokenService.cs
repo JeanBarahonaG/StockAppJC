@@ -2,7 +2,6 @@
 using Duende.IdentityServer.Stores;
 using Duende.IdentityServer.Validation;
 using IdentityModel;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using StockAppJC.Models;
@@ -124,6 +123,10 @@ namespace StockAppJC.Services
             {
                 claimsPrincipal = tokenHandler.ValidateToken
                     (token, validationParameters, out SecurityToken validatedToken);
+                if (TokenRevocationManager.IsTokenRevoked(token)) 
+                {
+                    return false;
+                }
                 return true;
             }
             catch (Exception ex)
