@@ -5,7 +5,7 @@ using StockAppJC.Models;
 
 namespace StockAppJC.Services
 {
-    public class CategorieService
+    public class CategorieService : ICategorieService
     {
         private readonly ApplicationDbContext _context;
 
@@ -101,12 +101,12 @@ namespace StockAppJC.Services
             return response;
         }
 
-        public async Task<answer> UpdateCategory(Categoria category)
+        public async Task<answer> UpdateCategory(int id, Categoria category)
         {
             answer response = new answer();
             try
             {
-                var categoryObj = _context.Categorias.FirstOrDefault(x => x.id == category.id);
+                var categoryObj = _context.Categorias.FirstOrDefault(x => x.id == id);
                 if (categoryObj == null)
                 {
                     response.code = 404;
