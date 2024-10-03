@@ -78,6 +78,7 @@ builder.Services.AddCors(opt =>
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICategorieService, CategorieService>();
 
 var app = builder.Build();
 

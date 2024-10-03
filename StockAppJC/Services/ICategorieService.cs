@@ -7,8 +7,8 @@ namespace StockAppJC.Services
     {
         Task<IEnumerable<Categoria>> GetCategories();
         Task<Categoria> GetCategory(int id);
-        Task<answer> CreateCategory(Categoria category);
-        Task<answer> UpdateCategory(int id, Categoria category);
+        Task<answer> CreateCategory(CategoryViewModel category);
+        Task<answer> UpdateCategory(int id, CategoryViewModel category);
         Task<answer> DeleteCategory(int id);
     }
 }
