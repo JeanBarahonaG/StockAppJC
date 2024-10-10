@@ -14,6 +14,7 @@ namespace StockAppJC.Services
             _context = context;
         }
 
+        
         public async Task<IEnumerable<Categoria>> GetCategories()
         {
             try
@@ -71,14 +72,14 @@ namespace StockAppJC.Services
             }
         }
 
-        public async Task<answer> CreateCategory(Categoria category)
+        public async Task<answer> CreateCategory(CategoryViewModel category)
         {
             answer response = new answer();
             try
             {
                 var newCategory = new Categoria
                 {
-                    nombre = category.nombre
+                    nombre = category.name
                 };
 
                 if (newCategory == null)
@@ -101,7 +102,7 @@ namespace StockAppJC.Services
             return response;
         }
 
-        public async Task<answer> UpdateCategory(int id, Categoria category)
+        public async Task<answer> UpdateCategory(int id, CategoryViewModel category)
         {
             answer response = new answer();
             try
@@ -114,12 +115,8 @@ namespace StockAppJC.Services
                 }
                 else 
                 {
-                    var categoryUpdate = new Categoria
-                    {
-                        id = category.id,
-                        nombre = category.nombre
-                    };
-                    _context.Categorias.Update(categoryUpdate);
+                    categoryObj.nombre = category.name;
+                    _context.Categorias.Update(categoryObj);
                     await _context.SaveChangesAsync();
                     response.code = 200;
                     response.description = "Category Updated";

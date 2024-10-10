@@ -11,4 +11,9 @@ namespace StockAppJC.Models
         public string nombre { get; set; }
         public ICollection<Producto> Productos { get; set; }
     }
+
+    public class CategoryViewModel
+    {
+        public string name { get; set; }
+    }
 }
