@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StockAppJC.Models;
 using StockAppJC.Services;
 
@@ -16,6 +17,7 @@ namespace StockAppJC.Controllers
         }
 
         [HttpGet("GetCategories")]
+        [Authorize(Roles = "Admin, Regulate")]
         public async Task<IActionResult> GetCategories()
         {
             try
@@ -30,6 +32,7 @@ namespace StockAppJC.Controllers
         }
 
         [HttpGet("GetCategory")]
+        [Authorize(Roles = "Admin, Regulate")]
         public async Task<IActionResult> GetCategory(int id)
         {
             try
@@ -44,6 +47,7 @@ namespace StockAppJC.Controllers
         }
 
         [HttpPost("CreateCategory")]
+        [Authorize(Roles = "Admin, Regulate")]
         public async Task<IActionResult> CreateCategory(CategoryViewModel category)
         {
             try
@@ -58,6 +62,7 @@ namespace StockAppJC.Controllers
         }
 
         [HttpPut("UpdateCategory")]
+        [Authorize(Roles = "Admin, Regulate")]
         public async Task<IActionResult> UpdateCategory(int id, CategoryViewModel category)
         {
             try
@@ -72,6 +77,7 @@ namespace StockAppJC.Controllers
         }
 
         [HttpDelete("DeleteCategory")]
+        [Authorize(Roles = "Admin, Regulate")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             try
